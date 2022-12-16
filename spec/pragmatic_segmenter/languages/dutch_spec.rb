@@ -19,5 +19,10 @@ RSpec.describe PragmaticSegmenter::Languages::Dutch, '(nl)' do
       ps = PragmaticSegmenter::Segmenter.new(text: "Afkorting aanw. vnw.", language: 'nl')
       expect(ps.segment).to eq(["Afkorting aanw. vnw."])
     end
+
+    it 'correctly segments text #002' do
+      ps = PragmaticSegmenter::Segmenter.new(text: "Dit is een test pagina van Dr. Brown met inhoud met de merknaam. Laten we wat extra tekst aan deze pagina toevoegen. Nog een zin bij de merknaam: Dr. Brown's is ons merk.", language: 'nl')
+      expect(ps.segment).to eq(["Dit is een test pagina van Dr. Brown met inhoud met de merknaam.", "Laten we wat extra tekst aan deze pagina toevoegen.", "Nog een zin bij de merknaam: Dr. Brown's is ons merk."])
+    end
   end
 end
